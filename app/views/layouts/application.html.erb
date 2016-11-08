@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BlogApp</title>
+    <title><%= yield(:title) %> </title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,12 +9,23 @@
   </head>
 
   <body>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <%= link_to "MY BLOG", '#', id: "logo" %>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <% if !user_signed_in? %>
+            <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <li><%= link_to "Sign in", new_user_session_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </header>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  <% if !user_signed_in? %>
-  <%= link_to "Sign up", new_user_registration_path %> or
-  <%= link_to "Sign in", new_user_session_path %>
-  <% end %>
+  <div class="container">
     <%= yield %>
+  </div>
   </body>
 </html>

@@ -1,3 +1,7 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
 body {
   background-color: #fff;
   color: #333;
@@ -5,6 +9,7 @@ body {
   font-size: 13px;
   line-height: 18px;
   margin: 33px;
+
 }
 
 p, ol, ul, td {
@@ -86,4 +91,20 @@ div {
 
 label {
   display: block;
+}
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 18px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
 }
