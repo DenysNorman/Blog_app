@@ -4,6 +4,9 @@
 
 
 <table class="table">
+  <% if @posts.count == 0 %>
+      <h2>Posts list are empty.</h2>
+  <% else %>
     <% @posts.each do |post| %>
       <tr>
         <td class="info"><span>Author:</span> <%= post.user.name%></td>
@@ -23,6 +26,7 @@
         </td>
         <% end %>
       </tr>
+     <% end %>
 <% end %>
 </table>
 
