@@ -28,10 +28,6 @@ pre {
 a {
   color: #000;
 
-  &:visited {
-    color: #666;
-  }
-
   &:hover {
     color: #fff;
     background-color: #000;
@@ -131,4 +127,10 @@ span{
 }
 .show_action{
   margin: 10px 0px;
+}
+.form-width{
+  width : 200px;
+}
+#button-signup{
+  margin-top: 25px;
 }
