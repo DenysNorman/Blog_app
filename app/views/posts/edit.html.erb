@@ -3,8 +3,8 @@
 
 <% if user_signed_in? && @post.user == current_user  %>
   <%= render 'form', post: @post %>
-  <%= link_to 'Show', @post %> |
+  <%= link_to 'Show', @post, class: "btn btn-default btn-xs"  %>
 <% else %>
   <h2> You can't edit this post</h2>
 <% end %>
-<%= link_to 'Back', posts_path %>
+<%= link_to 'Back', posts_path, class: "btn btn-default btn-xs"  %>
