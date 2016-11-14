@@ -4,12 +4,20 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.includes(:user)
+      respond_to do |format|
+        format.html
+        format.json { render :json => @posts, :except=>  [:updated_at, :user_id], :include => {:user => { :only => [:name] } } }
+      end
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json { render :json => @post, :except=>  [:updated_at, :user_id], :include => {:user => { :only => [:name] } } }
+    end
   end
 
   # GET /posts/new
