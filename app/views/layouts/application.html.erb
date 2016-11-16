@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="downlited">
   <header class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
       <%= link_to "MY BLOG", root_path, id: "logo" %>
@@ -25,7 +25,11 @@
     </div>
   </header>
   <div class="container">
-    <div class= 'views'  data-views=<%= track_visits %>></div>
+    <div class= 'views' data-vies="<%= track_visits %>">
+      <% if track_visits % 10 == 0 %>
+        <%= render 'baner' %>
+      <% end %>
+    </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>

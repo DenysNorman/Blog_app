@@ -134,3 +134,24 @@ span{
 .button-margin{
   margin-top: 25px;
 }
+
+.baner{
+  background-color: cornflowerblue;
+  padding: 15px;
+  text-align: center;
+  position: absolute;
+  width: 40%;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.background{
+  height: 100%;
+  width: 100%;
+  background-color: #2E2F30;
+  opacity: 0.5;
+  position: absolute;
+  left: 0;
+}

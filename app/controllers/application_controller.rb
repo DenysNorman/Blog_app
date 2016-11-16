@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :set_visitor_cookie
 
+  def baner
+  end
+
   def set_visitor_cookie
     cookies[:visits] = {
         value: increment_counter,
