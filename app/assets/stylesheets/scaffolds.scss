@@ -111,9 +111,6 @@ label {
 .borders{
   border-bottom: 2px solid #000;
 }
-span{
-  font-weight: bold;
-}
 .show{
   margin: 0px;
   padding: 15px;
@@ -154,4 +151,7 @@ span{
   opacity: 0.5;
   position: absolute;
   left: 0;
+}
+#time{
+  float:right;
 }

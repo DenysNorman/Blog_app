@@ -9,10 +9,10 @@
   <% else %>
     <% @posts.each do |post| %>
       <tr>
-        <td class="info"><span>Author:</span> <%= post.user.name%></td>
+        <td class="info"><strong>Author:</strong> <%= post.user.name%> <span id='time' ><%= set_date(post) %></span></td>
       </tr>
       <tr class="warning">
-        <td><span>Title:</span> <%= post.title %></td>
+        <td><strong>Title:</strong> <%= post.title %></td>
       </tr>
       <tr class="active borders">
         <td><%= post.content %>

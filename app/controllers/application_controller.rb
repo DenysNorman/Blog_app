@@ -26,4 +26,10 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :track_visits
+
+  def set_date(post)
+    Russian::strftime(post.created_at, " Запись создана: %d %B %Y года в %H:%M")
+  end
+
+  helper_method :set_date
 end
