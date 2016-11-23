@@ -1,18 +1,19 @@
 
 <% provide(:title, "Post") %>
 <h2><%= @post.user.name %> post</h2>
-
-<p class="show" id="show-title">
-  <strong>Title:</strong>
-  <%= @post.title %>
-  <span class='right_action' > <%= set_date(@post) %> </span>
-</p>
-
-<p class="show"  id="show-content">
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
+<div class="container container_post">
+<% if @post.image? %>
+  <%= image_tag @post.image_url , class:'image_logo'%>
+<% else %>
+  <%= image_tag 'defaultimage.jpg' , class:'image_logo'%>
+<% end %>
+<span class='right_action' > <%= set_date(@post) %> </span>
+<h3><strong>Title:</strong> <%= @post.title %></h3>
+<div class='content'>
+  <h4><strong>Content:</strong></h4>
+  <p><%= @post.content %></p>
+</div>
+</div>
 <section id="comment-section">
   <ul id="coments">
     <%= render @comments %>
