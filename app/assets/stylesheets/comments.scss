@@ -1,0 +1,27 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#comment-section{
+  float:right;
+  li {
+    position:relative;
+    list-style-type: none;
+
+    .side{
+      position:absolute;
+      background-color: #999999;
+      width: 5px;
+      height:100%;
+    }
+
+    .comment_body{
+      margin-left: 10px;
+    }
+  }
+  .date{
+    color: #999999;
+  }
+  .button_margin_comment{
+    margin-top: 10px;
+  }
+}

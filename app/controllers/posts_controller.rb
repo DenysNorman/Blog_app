@@ -14,6 +14,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comments = @post.comments
     respond_to do |format|
       format.html
       format.json { render :json => @post, :except=>  [:updated_at, :user_id], :include => {:user => { :only => [:name] } } }

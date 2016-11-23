@@ -23,7 +23,12 @@
         <td><strong>Title:</strong> <%= post.title %><span class='right_action' ><%= set_date(post) %></span></td>
       </tr>
       <tr class="active borders">
-        <td><%= post.content %></td>
+        <td><%= post.content %>
+          <span class='right_action' >
+            <%= link_to '', post, class: "glyphicon glyphicon-comment" %>
+            <%= post.comments.count %>
+          </span>
+        </td>
       </tr>
      <% end %>
 <% end %>
