@@ -29,8 +29,7 @@ a {
   color: #000;
 
   &:hover {
-    color: #fff;
-    background-color: #000;
+    text-decoration: none;
   }
 }
 
@@ -152,6 +151,6 @@ label {
   position: absolute;
   left: 0;
 }
-#time{
+.right_action{
   float:right;
 }

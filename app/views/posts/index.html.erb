@@ -9,26 +9,25 @@
   <% else %>
     <% @posts.each do |post| %>
       <tr>
-        <td class="info"><strong>Author:</strong> <%= post.user.name%> <span id='time' ><%= set_date(post) %></span></td>
+        <td class="info"><strong>Author:</strong> <%= post.user.name%>
+          <span class='right_action' >
+            <%= link_to '', post, class: "glyphicon glyphicon-share-alt" %>
+            <% if post.user == current_user %>
+                <%= link_to '', edit_post_path(post), class: "glyphicon glyphicon-pencil" %>
+                <%= link_to '', post, method: :delete, class: "glyphicon glyphicon-remove", data: { confirm: 'Are you sure?'} %>
+            <% end %>
+          </span>
+        </td>
       </tr>
       <tr class="warning">
-        <td><strong>Title:</strong> <%= post.title %></td>
+        <td><strong>Title:</strong> <%= post.title %><span class='right_action' ><%= set_date(post) %></span></td>
       </tr>
       <tr class="active borders">
-        <td><%= post.content %>
-          <div class="action-btns">
-            <%= link_to 'Show', post, class: "btn btn-info" %>
-            <% if post.user == current_user %>
-            <%= link_to 'Edit', edit_post_path(post), class: "btn btn-warning" %>
-            <%= link_to 'Destroy', post, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?'} %>
-          </div>
-        </td>
-        <% end %>
+        <td><%= post.content %></td>
       </tr>
      <% end %>
 <% end %>
 </table>
 
 <br>
-
 <%= link_to 'New Post', new_post_path, class: "btn btn-success" %>
