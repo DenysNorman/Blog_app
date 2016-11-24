@@ -14,11 +14,12 @@
   <p><%= @post.content %></p>
 </div>
 </div>
-<section id="comment-section">
-  <ul id="coments">
+
+<section class="comment-section">
+  <ul class="comments">
     <%= render @comments %>
   </ul>
-  <%= form_for [@post, @post.comments.new] do|f| %>
+  <%= form_for [@post, @post.comments.new], remote: true do|f| %>
     <fieldset>
         <ul>
           <li>

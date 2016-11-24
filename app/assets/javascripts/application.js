@@ -19,4 +19,8 @@ $( document ).on('turbolinks:load', function()  {
     $('.baner').on('click', 'button', function(){
         $('.views').hide();
     });
+
+    $('.active').on('click', 'button', function(){
+        $(this).closest('.active').next('.row-comments').fadeToggle();
+    });
 });

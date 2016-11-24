@@ -8,36 +8,66 @@
       <h2>Posts list are empty.</h2>
   <% else %>
     <% @posts.each do |post| %>
-      <tr></tr>
-      <tr>
-        <td rowspan="2" class='small_logo' >
-          <% if post.image? %>
-              <%= link_to image_tag(post.image_url(:thumb), alt: "Post logo"), post%>
-          <% else %>
-              <%=  link_to image_tag('defaultimage_sm.jpg', alt: "Post logo"), post%>
-          <% end %>
-        </td>
-        <td class="info"><strong>Author:</strong> <%= post.user.name%>
-          <span class='right_action' >
-            <%= link_to '', post, class: "glyphicon glyphicon-share-alt" %>
-            <% if post.user == current_user %>
-                <%= link_to '', edit_post_path(post), class: "glyphicon glyphicon-pencil" %>
-                <%= link_to '', post, method: :delete, class: "glyphicon glyphicon-remove", data: { confirm: 'Are you sure?'} %>
+          <% @post = post %>
+          <% @comments = post.comments %>
+        <tr></tr>
+        <tr>
+          <td rowspan="2" class='small_logo' >
+            <% if post.image? %>
+                <%= link_to image_tag(post.image_url(:thumb), alt: "Post logo"), post%>
+            <% else %>
+                <%=  link_to image_tag('defaultimage_sm.jpg', alt: "Post logo"), post%>
             <% end %>
-          </span>
-        </td>
-      </tr>
-      <tr class="warning">
-        <td><strong>Title:</strong> <%= post.title %><span class='right_action' ><%= set_date(post) %></span></td>
-      </tr>
-      <tr class="active borders">
-        <td colspan="2"><%= post.content %>
-          <span class='right_action' >
-            <%= link_to '', post, class: "glyphicon glyphicon-comment" %>
-            <%= post.comments.count %>
-          </span>
-        </td>
-      </tr>
+          </td>
+          <td class="info"><strong>Author:</strong> <%= post.user.name%>
+            <span class='right_action' >
+              <%= link_to '', post, class: "glyphicon glyphicon-share-alt" %>
+              <% if post.user == current_user %>
+                  <%= link_to '', edit_post_path(post), class: "glyphicon glyphicon-pencil" %>
+                  <%= link_to '', post, method: :delete, class: "glyphicon glyphicon-remove", data: { confirm: 'Are you sure?'} %>
+              <% end %>
+            </span>
+          </td>
+        </tr>
+        <tr class="warning">
+          <td><strong>Title:</strong> <%= post.title %><span class='right_action' ><%= set_date(post) %></span></td>
+        </tr>
+        <tr class="active">
+          <td colspan="2"><%= post.content %>
+            <span class='right_action' >
+              <button type='button' class='comments-link glyphicon glyphicon-comment '></button>
+              <%= post.comments.count %>
+            </span>
+          </td>
+        </tr>
+
+        <tr class="row-comments borders ">
+          <td colspan="2">
+            <span class='right_action' >
+
+              <section class="comment-section">
+                <ul class="comments">
+                  <%= render @comments %>
+                </ul>.
+                    <%= form_for [post, post.comments.new], remote: true do|f| %>
+                    <fieldset>
+                        <ul>
+                          <li>
+                            <%= f.text_area :body, class:'form-control', rows: 2, cols: 60,
+                                            placeholder: 'Write a comment...' %>
+                          </li>
+                          <li class="button_margin_comment">
+                            <%= f.submit 'Post comment', class: "btn btn-success btn-sm" %>
+                          </li>
+                        </ul>
+                    </fieldset>
+                <% end %>
+              </section>
+
+            </span>
+          </td>
+        </tr>
+
      <% end %>
 <% end %>
 </table>
