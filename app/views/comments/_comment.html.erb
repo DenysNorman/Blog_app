@@ -1,4 +1,4 @@
-<li>
+<li id="comment_<%= comment.id %>">
   <div class="side"></div>
   <div class = "comment_body">
     <strong><%= comment.user.name %></strong>
@@ -7,6 +7,7 @@
       <% if @post.user == current_user || comment.user == current_user%>
           <%= link_to '', [comment.post, comment],
                       method: :delete,
+                      remote: true,
                       class: 'glyphicon glyphicon-remove',
                       data: { confirm: 'Are you shure?' } %>
       <% end %>
