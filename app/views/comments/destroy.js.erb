@@ -1,1 +1,2 @@
 $('.comments').find('#comment_<%= @comment.id %>').remove();
+$('.count_comments_post_<%= @post.id %>').text("<%= @post.comments.count %>");

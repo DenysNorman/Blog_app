@@ -5,54 +5,10 @@
 
 <table class="table">
   <% if @posts.count == 0 %>
-      <h2>Posts list are empty.</h2>
+    <h2>Posts list are empty.</h2>
   <% else %>
-    <% @posts.each do |post| %>
-          <% @post = post %>
-          <% @comments = post.comments %>
-        <tr></tr>
-        <tr>
-          <td rowspan="2" class='small_logo' >
-            <% if post.image? %>
-                <%= link_to image_tag(post.image_url(:thumb), alt: "Post logo"), post%>
-            <% else %>
-                <%=  link_to image_tag('defaultimage_sm.jpg', alt: "Post logo"), post%>
-            <% end %>
-          </td>
-          <td class="info"><strong>Author:</strong> <%= post.user.name%>
-            <span class='right_action' >
-              <%= link_to '', post, class: "glyphicon glyphicon-share-alt" %>
-              <% if post.user == current_user %>
-                  <%= link_to '', edit_post_path(post), class: "glyphicon glyphicon-pencil" %>
-                  <%= link_to '', post, method: :delete,  class: "glyphicon glyphicon-remove", data: { confirm: 'Are you sure?'} %>
-              <% end %>
-            </span>
-          </td>
-        </tr>
-        <tr class="warning">
-          <td><strong>Title:</strong> <%= post.title %><span class='right_action' ><%= set_date(post) %></span></td>
-        </tr>
-        <tr class="active">
-          <td colspan="2"><%= post.content %>
-            <span class='right_action' >
-              <button type='button' class='comments-link glyphicon glyphicon-comment '></button>
-              <span class="count_comment"><%= post.comments.count %></span>
-            </span>
-          </td>
-        </tr>
-
-        <tr class="row-comments borders ">
-          <td colspan="2">
-            <span class='right_action' >
-
-              <%= render 'commentsblock' %>
-
-            </span>
-          </td>
-        </tr>
-
-     <% end %>
-<% end %>
+    <%= render @posts %>
+  <% end %>
 </table>
 
 <br>
