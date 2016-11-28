@@ -1,0 +1,1 @@
+$('#post_<%= @post.id %>_count').text('<%= pluralize @post.reputation_for(:votes).to_i, "vote" %>');

@@ -23,6 +23,17 @@ class CommentsController < ApplicationController
     end
   end
 
+  def vote
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    value = params[:type] == "up" ? 1 : -1
+    @comment.add_or_update_evaluation(:votes, value, current_user)
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   private
 
   def comment_params

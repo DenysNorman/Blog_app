@@ -6,4 +6,6 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   mount_uploader :image, PostImageUploader
+
+  has_reputation :votes, source: :user, aggregated_by: :sum
 end

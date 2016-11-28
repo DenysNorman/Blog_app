@@ -24,9 +24,14 @@
 <tr class="active post_<%= post.id %>">
   <td colspan="2"><%= post.content %>
     <span class='right_action' >
-              <button type='button' class='comments-link glyphicon glyphicon-comment '></button>
-              <span class="count_comments_post_<%= post.id %>"><%= post.comments.count %></span>
-            </span>
+      <span class="count_vote_post_<%= post.id %>">
+        <span id="post_<%= post.id %>_count"><%= pluralize post.reputation_for(:votes).to_i, "vote" %></span>
+        <%= link_to '', vote_post_path(post, type: 'up'),method: 'post', remote: true, class:'glyphicon glyphicon-thumbs-up' %>
+        <%= link_to '', vote_post_path(post, type: 'down'),method: 'post', remote: true, class:'glyphicon glyphicon-thumbs-down' %>
+      </span>
+      <button type='button' class='comments-link glyphicon glyphicon-comment '></button>
+      <span class="count_comments_post_<%= post.id %>"><%= post.comments.count %></span>
+    </span>
   </td>
 </tr>
 

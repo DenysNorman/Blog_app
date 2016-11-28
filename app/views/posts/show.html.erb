@@ -7,7 +7,13 @@
 <% else %>
   <%= image_tag 'defaultimage.jpg' , class:'image_logo'%>
 <% end %>
-<span class='right_action' > <%= set_date(@post) %> </span>
+<span class='right_action votes' > <%= set_date(@post) %><br>
+  <span class="count_vote_post_<%= @post.id %>" >
+        <span id="post_<%= @post.id %>_count"><%= pluralize @post.reputation_for(:votes).to_i, "vote" %></span>
+    <%= link_to '', vote_post_path(@post, type: 'up'),method: 'post', remote: true, class:'glyphicon glyphicon-thumbs-up' %>
+    <%= link_to '', vote_post_path(@post, type: 'down'),method: 'post', remote: true, class:'glyphicon glyphicon-thumbs-down' %>
+  </span>
+</span>
 <h3><strong>Title:</strong> <%= @post.title %></h3>
 <div class='content'>
   <h4><strong>Content:</strong></h4>

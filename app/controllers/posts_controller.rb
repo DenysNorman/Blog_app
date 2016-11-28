@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :vote]
   before_action :authenticate_user!,  :except => [:index, :show]
   # GET /posts
   # GET /posts.json
@@ -69,6 +69,15 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
+    end
+  end
+
+  def vote
+    value = params[:type] == "up" ? 1 : -1
+    @post.add_or_update_evaluation(:votes, value, current_user)
+    respond_to do |format|
+      format.html
       format.js
     end
   end
