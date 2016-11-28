@@ -1,0 +1,5 @@
+if ($('#new_post_link').next('form').length > 0) {
+  $('#new_post_link').next().remove();
+} else {
+  $('#new_post_link').after('<%= j render 'form', post: @post  %>');
+};
