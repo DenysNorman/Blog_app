@@ -1,3 +1,7 @@
+if( $('.table').find('tr').length == 0 ){
+  $('h2').remove();
+  $('.table').append("<tr></tr>");
+};
 $('.table').find('tr').last().after('<%= j render @post %>')
 $('#new_post').find('input').val('');
 $('#new_post').find('textarea').val('');
