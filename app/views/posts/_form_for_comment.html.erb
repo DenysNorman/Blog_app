@@ -1,0 +1,14 @@
+<%= form_for [@post, @post.comments.new(parent_id: params[:parent_id])], remote: true do|f| %>
+    <fieldset>
+      <ul>
+        <%= f.hidden_field :parent_id %>
+        <li>
+          <%= f.text_area :body, class:'form-control', rows: 2, cols: 60,
+                          placeholder: 'Write a comment...' %>
+        </li>
+        <li class="button_margin_comment">
+          <%= f.submit 'Post comment', class: "btn btn-success btn-sm" %>
+        </li>
+      </ul>
+    </fieldset>
+<% end %>

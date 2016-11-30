@@ -57,3 +57,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'activerecord-reputation-system', '~> 3.0', '>= 3.0.1', require: 'reputation_system'
+gem 'ancestry', '~> 2.1'

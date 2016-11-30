@@ -28,3 +28,11 @@
 .row-comments{
   display:none;
 }
+
+.nested_comments{
+  margin-left: 50px;
+}
+
+.nested_comments .nested_comments .nested_comments{
+  margin-left: 0;
+}

@@ -1,0 +1,6 @@
+if ($('#comment_<%= @comment.parent_id %>').next('.nested_comments').next('form').length > 0){
+  $('.comments').find('form').remove();
+} else {
+  $('.comments').find('form').remove();
+  $('#comment_<%= @comment.parent_id %>').next('.nested_comments').after('<%= j render 'posts/form_for_comment', post: @comment  %>');
+}

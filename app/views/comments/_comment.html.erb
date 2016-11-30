@@ -16,7 +16,8 @@
                       remote: true,
                       class: 'glyphicon glyphicon-remove',
                       data: { confirm: 'Are you shure?' } %>
-      <% end %>
+      <% end %> <br>
+      <%= link_to "", new_post_comment_path(@post, parent_id: comment), remote: true, class:'glyphicon glyphicon-chevron-down' %>
     </span>
     <p>
       <%= comment.body %>

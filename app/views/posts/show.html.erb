@@ -20,7 +20,9 @@
   <p><%= @post.content %></p>
 </div>
 </div>
+<span  id="block_id_<%= @post.id %>">
 <%= render 'commentsblock' %>
+</span>
 <div class = "show_action">
 <% if user_signed_in? && @post.user == current_user  %>
   <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-warning" %>

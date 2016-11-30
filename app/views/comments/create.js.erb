@@ -1,3 +1,10 @@
-$('.comments').append("<%= j render @comment %>");
-$('.count_comments_post_<%= @post.id %>').text("<%= @post.comments.count %>");
+if ('<%= @comment.parent_id %>') {
+  $('#comment_<%= @comment.parent_id %>').next('.nested_comments').append("<%= j render @comment %>");
+  $('#comment_<%= @comment.parent_id %>').next('.nested_comments').append("<div class='nested_comments'></div>");
+}else {
+  $('.comments').append("<%= j render @comment %>");
+  $('.count_comments_post_<%= @post.id %>').text("<%= @post.comments.count %>");
+};
+
 $('.form-control').val('');
+$('#comment_<%= @comment.parent_id %>').next('.nested_comments').next().remove();
