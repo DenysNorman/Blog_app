@@ -9,6 +9,7 @@ body {
   font-size: 13px;
   line-height: 18px;
   margin: 33px;
+  background: url("/assets/background_grad.jpg");
 
 }
 
@@ -95,7 +96,7 @@ label {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 18px;
+  padding-top: 3px;
   font-weight: bold;
 }
 
@@ -154,3 +155,4 @@ label {
 .votes {
   text-align: right;
 }
+

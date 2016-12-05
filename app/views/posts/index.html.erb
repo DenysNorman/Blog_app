@@ -1,15 +1,18 @@
+<% provide(:title, "Высказывания") %>
+<p class="messages">
+  <span class="notice"><%= notice %></span>
+  <span class="alert"><%= alert %></span></p>
 
-<% provide(:title, "Posts") %>
-<h1>Posts</h1>
+<h1>Высказывания</h1>
 
 
 <table class="table">
   <% if @posts.count == 0 %>
-    <h2>Posts list are empty.</h2>
+    <h2>Никто ничего не сказал.</h2>
   <% else %>
     <%= render @posts %>
   <% end %>
 </table>
 
 <br>
-<%= link_to 'New Post', new_post_path, remote: true, id:"new_post_link", class: "btn btn-success"  %>
+<%= link_to 'Высказаться', new_post_path, remote: true, id:"new_post_link", class: "btn btn-success"  %>

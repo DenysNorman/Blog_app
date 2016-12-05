@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
   def baner
   end
 
+  def welcome
+    if current_user
+      redirect_to posts_url
+    end
+  end
+
   def set_visitor_cookie
     cookies[:visits] = {
         value: increment_counter,

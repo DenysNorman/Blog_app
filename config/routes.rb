@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     member { post :vote }
   end
 
-  root 'posts#index'
+  get 'application/welcome'
+  root 'application#welcome'
 end

@@ -1,6 +1,10 @@
 
-<% provide(:title, "Post") %>
-<h2><%= @post.user.name %> post</h2>
+<% provide(:title, "Высказывание") %>
+<p class="messages">
+  <span class="notice"><%= notice %></span>
+  <span class="alert"><%= alert %></span></p>
+
+<h2><%= @post.user.name %> высказался</h2>
 <div class="container container_post">
 <% if @post.image? %>
   <%= image_tag @post.image_url , class:'image_logo'%>
@@ -14,9 +18,9 @@
     <%= link_to '', vote_post_path(@post, type: 'down'),method: 'post', remote: true, class:'glyphicon glyphicon-thumbs-down' %>
   </span>
 </span>
-<h3><strong>Title:</strong> <%= @post.title %></h3>
+<h3><strong>Тема:</strong> <%= @post.title %></h3>
 <div class='content'>
-  <h4><strong>Content:</strong></h4>
+  <h4><strong>Высказывание:</strong></h4>
   <p><%= @post.content %></p>
 </div>
 </div>
@@ -25,7 +29,7 @@
 </span>
 <div class = "show_action">
 <% if user_signed_in? && @post.user == current_user  %>
-  <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-warning" %>
+  <%= link_to 'Поправить', edit_post_path(@post), class: "btn btn-warning" %>
 <% end %>
-<%= link_to 'Back', posts_path, class: "btn btn-primary" %>
+<%= link_to 'Назад', posts_path, class: "btn btn-primary" %>
 </div>

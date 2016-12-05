@@ -8,7 +8,7 @@
         <%=  link_to image_tag('defaultimage_sm.jpg', alt: "Post logo"), post%>
     <% end %>
   </td>
-  <td class="info"><strong>Author:</strong> <%= post.user.name%>
+  <td class="info"><strong>Автор:</strong> <%= post.user.name%>
     <span class='right_action' >
               <%= link_to '', post, class: "glyphicon glyphicon-share-alt" %>
       <% if post.user == current_user %>
@@ -19,7 +19,7 @@
   </td>
 </tr>
 <tr class="warning post_<%= post.id %>">
-  <td><strong>Title:</strong> <%= post.title %><span class='right_action' ><%= set_date(post) %></span></td>
+  <td><strong>Тема:</strong> <%= post.title %><span class='right_action' ><%= set_date(post) %></span></td>
 </tr>
 <tr class="active post_<%= post.id %>">
   <td colspan="2"><%= post.content %>
