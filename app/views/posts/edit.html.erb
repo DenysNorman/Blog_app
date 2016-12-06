@@ -1,13 +1,16 @@
 <% provide(:title, "Поправить себя") %>
-<p class="messages">
-  <span class="notice"><%= notice %></span>
-  <span class="alert"><%= alert %></span></p>
+<span id="edit"></span>
+<div class="background-show">
+  <p class="messages">
+    <span class="notice"><%= notice %></span>
+    <span class="alert"><%= alert %></span></p>
 
-<h1>Поправить себя</h1>
+  <h1>Поправить себя</h1>
 
-<% if user_signed_in? && @post.user == current_user  %>
-  <%= render 'form', post: @post %>
-<% else %>
-  <h2> Вы не можете поправить высказывание другого человека</h2>
-<% end %>
-<%= link_to 'Назад', posts_path, class: "btn btn-default btn-xs"  %>
+  <% if user_signed_in? && @post.user == current_user  %>
+    <%= render 'form', post: @post %>
+  <% else %>
+    <h2> Вы не можете поправить высказывание другого человека</h2>
+  <% end %>
+  <%= link_to 'Назад', posts_path, class: "btn btn-default btn-xs"  %>
+</div>

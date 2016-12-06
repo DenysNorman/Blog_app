@@ -59,3 +59,32 @@
   font-weight: bold;
   color: #000000;
 }
+
+.home{
+  background: url("/assets/room.jpg") no-repeat;
+  background-size: 100%;
+}
+.background-show{
+  background-color:rgba(209, 209, 209, 0.5);
+  height: 100vh;
+  width: 100%;
+  h1, h2{
+    text-align: center;
+    font-weight: bold;
+    border: 5px solid saddlebrown;
+    background-color: burlywood;
+
+  }
+}
+
+.broun_row{
+  background-color: saddlebrown;
+  color: #eeeeee;
+}
+.yellow_row {
+  background-color: burlywood;
+}
+
+.container_post{
+  background-color: burlywood;
+}

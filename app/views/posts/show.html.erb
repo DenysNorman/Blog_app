@@ -1,35 +1,38 @@
 
 <% provide(:title, "Высказывание") %>
-<p class="messages">
-  <span class="notice"><%= notice %></span>
-  <span class="alert"><%= alert %></span></p>
+<span id="show"></span>
+<div class="background-show">
+  <p class="messages">
+    <span class="notice"><%= notice %></span>
+    <span class="alert"><%= alert %></span></p>
 
-<h2><%= @post.user.name %> высказался</h2>
-<div class="container container_post">
-<% if @post.image? %>
-  <%= image_tag @post.image_url , class:'image_logo'%>
-<% else %>
-  <%= image_tag 'defaultimage.jpg' , class:'image_logo'%>
-<% end %>
-<span class='right_action votes' > <%= set_date(@post) %><br>
-  <span class="count_vote_post_<%= @post.id %>" >
-        <span id="post_<%= @post.id %>_count"><%= pluralize @post.reputation_for(:votes).to_i, "vote" %></span>
-    <%= link_to '', vote_post_path(@post, type: 'up'),method: 'post', remote: true, class:'glyphicon glyphicon-thumbs-up' %>
-    <%= link_to '', vote_post_path(@post, type: 'down'),method: 'post', remote: true, class:'glyphicon glyphicon-thumbs-down' %>
+  <h2><%= @post.user.name %> высказался</h2>
+  <div class="container container_post">
+  <% if @post.image? %>
+    <%= image_tag @post.image_url , class:'image_logo'%>
+  <% else %>
+    <%= image_tag 'defaultimage.jpg' , class:'image_logo'%>
+  <% end %>
+  <span class='right_action votes' > <%= set_date(@post) %><br>
+    <span class="count_vote_post_<%= @post.id %>" >
+          <span id="post_<%= @post.id %>_count"><%= pluralize @post.reputation_for(:votes).to_i, "vote" %></span>
+      <%= link_to '', vote_post_path(@post, type: 'up'),method: 'post', remote: true, class:'glyphicon glyphicon-thumbs-up' %>
+      <%= link_to '', vote_post_path(@post, type: 'down'),method: 'post', remote: true, class:'glyphicon glyphicon-thumbs-down' %>
+    </span>
   </span>
-</span>
-<h3><strong>Тема:</strong> <%= @post.title %></h3>
-<div class='content'>
-  <h4><strong>Высказывание:</strong></h4>
-  <p><%= @post.content %></p>
-</div>
-</div>
-<span  id="block_id_<%= @post.id %>">
-<%= render 'commentsblock' %>
-</span>
-<div class = "show_action">
-<% if user_signed_in? && @post.user == current_user  %>
-  <%= link_to 'Поправить', edit_post_path(@post), class: "btn btn-warning" %>
-<% end %>
-<%= link_to 'Назад', posts_path, class: "btn btn-primary" %>
+  <h3 id="title_show"><strong>Тема:</strong> <%= @post.title %></h3>
+  <div class='content'>
+    <h4><strong>Высказывание:</strong></h4>
+    <p><%= @post.content %></p>
+  </div>
+  </div>
+  <span  id="block_id_<%= @post.id %>">
+  <%= render 'commentsblock' %>
+  </span>
+  <div class = "show_action">
+  <% if user_signed_in? && @post.user == current_user  %>
+    <%= link_to 'Поправить', edit_post_path(@post), class: "btn btn-warning" %>
+  <% end %>
+  <%= link_to 'Назад', posts_path, class: "btn btn-primary" %>
+  </div>
 </div>

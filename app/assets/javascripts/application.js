@@ -19,6 +19,9 @@ $( document ).on('turbolinks:load', function()  {
     $('.baner').on('click', 'button', function(){
         $('.views').hide();
     });
+    if($('#index').length > 0 || $('#show').length > 0 || $('#edit').length > 0 ){
+      $('body').addClass('home');
+    };
 });
 
 $( document ).on('click','button', function()  {
