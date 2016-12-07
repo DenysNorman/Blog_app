@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => :create
   before_action :set_post, only: [:show, :edit, :update, :destroy, :vote]
   before_action :authenticate_user!,  except: [:index, :show]
   # GET /posts
