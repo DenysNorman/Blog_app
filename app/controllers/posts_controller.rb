@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :vote]
-  before_action :authenticate_user!,  :except => [:index, :show]
+  before_action :authenticate_user!,  except: [:index, :show]
   # GET /posts
   # GET /posts.json
 
@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     @posts = Post.all.includes(:user)
       respond_to do |format|
         format.html
-        format.json { render :json => @posts, :except=>  [:updated_at, :user_id], :include => {:user => { :only => [:name] } } }
+        format.json { render json: @posts, except: [:updated_at, :user_id], include: {user: { only: [:name] } } }
       end
   end
 
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @comments = @post.comments
     respond_to do |format|
       format.html
-      format.json { render :json => @post, :except=>  [:updated_at, :user_id], :include => {:user => { :only => [:name] } } }
+      format.json { render json: @posts, except: [:updated_at, :user_id], include: {user: { only: [:name] } } }
     end
   end
 

@@ -4,6 +4,7 @@ if ('<%= @comment.parent_id %>') {
 }else {
   $('.comments').append("<%= j render @comment %>");
   $('.count_comments_post_<%= @post.id %>').text("<%= @post.comments.count %>");
+    $('.comments').append("<div class='nested_comments'></div>");
 };
 
 $('.form-control').val('');
