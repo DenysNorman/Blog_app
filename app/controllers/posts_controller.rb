@@ -1,15 +1,14 @@
 class PostsController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => :create
+  skip_before_filter :verify_authenticity_token, only: :create
   before_action :set_post, only: [:show, :edit, :update, :destroy, :vote]
-  before_action :authenticate_user!,  except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /posts
   # GET /posts.json
-
   def index
     @posts = Post.all.includes(:user)
       respond_to do |format|
         format.html
-        format.json { render json: @posts, except: [:updated_at, :user_id], include: {user: { only: [:name] } } }
+        format.json { render json: @posts, except: [:updated_at, :user_id], include: { user: { only: [:name] } } }
       end
   end
 
@@ -19,7 +18,7 @@ class PostsController < ApplicationController
     @comments = @post.comments
     respond_to do |format|
       format.html
-      format.json { render json: @posts, except: [:updated_at, :user_id], include: {user: { only: [:name] } } }
+      format.json { render json: @posts, except: [:updated_at, :user_id], include: { user: { only: [:name] } } }
     end
   end
 
@@ -36,10 +35,10 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = current_user.posts.build(post_params)
-
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post,
+                                  notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
         format.js
       else

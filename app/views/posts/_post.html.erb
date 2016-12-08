@@ -8,14 +8,14 @@
         <%=  link_to image_tag('defaultimage_sm.jpg', alt: "Post logo"), post%>
     <% end %>
   </td>
-  <td class="broun_row"><strong>Автор:</strong> <%= post.user.name%>
+  <td class="broun_row"><strong>Автор:</strong><%= post.user.name%>
     <span class='right_action' >
-              <%= link_to '', post, class: "glyphicon glyphicon-share-alt" %>
+      <%= link_to '', post, class: "glyphicon glyphicon-share-alt" %>
       <% if post.user == current_user %>
-                  <%= link_to '', edit_post_path(post), class: "glyphicon glyphicon-pencil" %>
-          <%= link_to '', post, method: :delete, remote: true,  class: "glyphicon glyphicon-remove", data: { confirm: 'Are you sure?'} %>
-              <% end %>
-            </span>
+        <%= link_to '', edit_post_path(post), class: "glyphicon glyphicon-pencil" %>
+        <%= link_to '', post, method: :delete, remote: true,  class: "glyphicon glyphicon-remove", data: { confirm: 'Are you sure?'} %>
+      <% end %>
+    </span>
   </td>
 </tr>
 <tr class="yellow_row post_<%= post.id %>">
@@ -34,13 +34,10 @@
     </span>
   </td>
 </tr>
-
 <tr class="row-comments borders post_<%= post.id %>">
   <td colspan="2">
-            <span class='right_action', id="block_id_<%= post.id %>" >
-
-              <%= render 'commentsblock' %>
-
-            </span>
+    <span class='right_action', id="block_id_<%= post.id %>">
+      <%= render 'commentsblock' %>
+    </span>
   </td>
 </tr>

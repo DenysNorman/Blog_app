@@ -1,10 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_action :set_visitor_cookie
-
-  def baner
-  end
-
   def welcome
     if current_user
       redirect_to posts_url

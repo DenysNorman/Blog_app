@@ -6,7 +6,7 @@
     <span class="notice"><%= notice %></span>
     <span class="alert"><%= alert %></span></p>
 
-  <h2><%= @post.user.name %> высказался</h2>
+  <h2><%= @post.user.name %>высказался</h2>
   <div class="container container_post">
   <% if @post.image? %>
     <%= image_tag @post.image_url , class:'image_logo'%>
