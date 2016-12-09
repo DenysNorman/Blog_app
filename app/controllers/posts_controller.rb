@@ -6,10 +6,14 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all.includes(:user)
-      respond_to do |format|
-        format.html
-        format.json { render json: @posts, except: [:updated_at, :user_id], include: { user: { only: [:name] } } }
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: @posts,
+               except: [:updated_at, :user_id],
+               include: { user: { only: [:name] } }
       end
+    end
   end
 
   # GET /posts/1
@@ -18,7 +22,11 @@ class PostsController < ApplicationController
     @comments = @post.comments
     respond_to do |format|
       format.html
-      format.json { render json: @posts, except: [:updated_at, :user_id], include: { user: { only: [:name] } } }
+      format.json do
+        render json: @posts,
+               except: [:updated_at, :user_id],
+               include: { user: { only: [:name] } }
+      end
     end
   end
 
@@ -37,13 +45,21 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post,
-                                  notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
+        format.html do
+          redirect_to @post,
+                      notice: 'Post was successfully created.'
+        end
+        format.json do render :show,
+                              status: :created,
+                              location: @post
+        end
         format.js
       else
         format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @post.errors,
+                 status: :unprocessable_entity
+        end
         format.js
       end
     end
@@ -54,11 +70,17 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
+        format.html do
+          redirect_to @post,
+                      notice: 'Post was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @post.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
@@ -68,14 +90,17 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.html do
+        redirect_to posts_url,
+                    notice: 'Post was successfully destroyed.'
+      end
       format.json { head :no_content }
       format.js
     end
   end
 
   def vote
-    value = params[:type] == "up" ? 1 : -1
+    value = params[:type] == 'up' ? 1 : -1
     @post.add_or_update_evaluation(:votes, value, current_user)
     respond_to do |format|
       format.html
@@ -84,13 +109,14 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find_by_slug!(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:title, :content, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find_by_slug!(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def post_params
+    params.require(:post).permit(:title, :content, :image)
+  end
 end

@@ -1,8 +1,8 @@
 class Post < ApplicationRecord
   before_validation :generate_slug
 
-  validates :title, presence: true, length: {maximum: 10}
-  validates :content, presence: true, length: {maximum: 200}
+  validates :title, presence: true, length: { maximum: 10 }
+  validates :content, presence: true, length: { maximum: 200 }
   validates :slug, uniqueness: true, presence: true
 
   belongs_to :user

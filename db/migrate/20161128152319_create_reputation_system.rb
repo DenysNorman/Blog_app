@@ -18,9 +18,9 @@ class CreateReputationSystem < ActiveRecord::Migration
   def self.up
     create_table :rs_evaluations do |t|
       t.string      :reputation_name
-      t.references  :source, :polymorphic => true
-      t.references  :target, :polymorphic => true
-      t.float       :value, :default => 0
+      t.references  :source, polymorphic: true
+      t.references  :target, polymorphic: true
+      t.float       :value, default: 0
       t.timestamps
     end
 
@@ -30,10 +30,10 @@ class CreateReputationSystem < ActiveRecord::Migration
 
     create_table :rs_reputations do |t|
       t.string      :reputation_name
-      t.float       :value, :default => 0
+      t.float       :value, default: 0
       t.string      :aggregated_by
-      t.references  :target, :polymorphic => true
-      t.boolean     :active, :default => true
+      t.references  :target, polymorphic: true
+      t.boolean     :active, default: true
       t.timestamps
     end
 
@@ -41,9 +41,9 @@ class CreateReputationSystem < ActiveRecord::Migration
     add_index :rs_reputations, [:target_id, :target_type]
 
     create_table :rs_reputation_messages do |t|
-      t.references  :sender, :polymorphic => true
+      t.references  :sender, polymorphic: true
       t.integer     :receiver_id
-      t.float       :weight, :default => 1
+      t.float       :weight, default: 1
       t.timestamps
     end
 

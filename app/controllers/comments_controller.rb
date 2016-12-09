@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     @comment.save
 
     respond_to do |format|
-      format.html {redirect_to @post}
+      format.html { redirect_to @post }
       format.js
     end
   end
@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html {redirect_to @post}
+      format.html { redirect_to @post }
       format.js
     end
   end
@@ -33,11 +33,10 @@ class CommentsController < ApplicationController
     end
   end
 
-
   def vote
     @post = Post.find_by_slug!(params[:post_id])
     @comment = @post.comments.find(params[:id])
-    value = params[:type] == "up" ? 1 : -1
+    value = params[:type] == 'up' ? 1 : -1
     @comment.add_or_update_evaluation(:votes, value, current_user)
     respond_to do |format|
       format.html
